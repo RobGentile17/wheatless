@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_action :require_login
 
   def index 
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.order(:id)
   end
 
   def show
@@ -18,6 +18,20 @@ class RecipesController < ApplicationController
         render :new
       end
   end 
+
+  def edit 
+    @recipe = current_user.recipes.find(params[:id])
+  end 
+
+  def update 
+    @recipe = current_user.recipes.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe), notice: "Recipe Updated!"
+    else
+      @errors = @recipe.errors.full_messages
+      render :edit
+    end
+  end
 
   def new 
     @recipe = current_user.recipes.build
