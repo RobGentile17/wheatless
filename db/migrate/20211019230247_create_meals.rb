@@ -1,6 +1,7 @@
 class CreateMeals < ActiveRecord::Migration[6.1]
   def change
     create_table :meals do |t|
+      t.string :name
       t.date :date, null: false
       t.references :meal_plan, null: false, foreign_key: true
       t.references :recipe, null: false, foreign_key: true

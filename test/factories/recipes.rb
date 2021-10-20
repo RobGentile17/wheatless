@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :recipe do
     name { Faker::Hipster.sentence}
     description { Faker::Hipster.paragraph }
