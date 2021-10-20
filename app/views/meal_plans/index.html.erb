@@ -4,7 +4,7 @@
   <h2>Current Meal Plan</h2>
   <div>
     <ul class="meals">
-      <%= @current_meal_plan.meals.each do |meal| %>
+      <% @current_meal_plan.meals.each do |meal| %>
         <li class="meal">
           <%= meal.date %> - <%= link_to meal.recipe, recipe_path(meal.recipe) %>
         </li>

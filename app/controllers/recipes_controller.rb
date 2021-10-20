@@ -40,9 +40,9 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.destroy
-    redirect_to recipe_path, notice: "Deleted Recipe: #{recipe.name}"
+    @recipe = current_user.recipes.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path, notice: "Deleted Recipe: #{@recipe.name}"
   end
 
 
