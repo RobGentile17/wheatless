@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :require_login
+ 
 
   def index
     @recipes = current_user.recipes.order(:id)

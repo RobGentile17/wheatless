@@ -1,5 +1,4 @@
 class MealPlansController < ApplicationController
-  before_action :require_login
 
   def index
     @current_meal_plan = current_user.meal_plans.where("start_date <= ? AND end_date >= ?", Date.today, Date.today).first
@@ -60,9 +59,10 @@ class MealPlansController < ApplicationController
         :start_date,
         :end_date,
         meals_attributes: %i[
-id 
-date 
-recipe_id]
+          id 
+          date 
+          recipe_id
+        ]
     )
   end
 end

@@ -1,5 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
+  has_many :side_dishes
 
   validates :name, presence: true, uniqueness: { scope: :user_id }
   validates :description, presence: true

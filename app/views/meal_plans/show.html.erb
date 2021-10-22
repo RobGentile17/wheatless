@@ -15,5 +15,6 @@
     <li><%= link_to("Delete", meal_plan_path(@meal_plan), data: {
         confirm: "Are you sure you want to delete meal plan: #{@meal_plan}?"},
         method: :delete) %></li>
+    <li><%= link_to("Back to Meal Plans", meal_plans_path(@meal_plan)) %></li>
   </ul>
 </div>
