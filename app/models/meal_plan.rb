@@ -8,21 +8,7 @@ class MealPlan < ApplicationRecord
 
   accepts_nested_attributes_for :meals
 
-  def build_meals
-    user_recipe_ids = user.recipes.pluck(:id)
-
-    (start_date..end_date).each do |date|
-      unused_recipe_ids = user_recipe_ids - meals.map(&:recipe_id)
-      available_recipe_ids = 
-      if unused_recipe_ids.empty?
-      user_recipe_ids
-      else
-      unused_recipe_ids
-      end
-
-      meals.build(date: date, recipe_id: available_recipe_ids.sample)
-    end
-  end
+  scope :between, -> (start_date, end_date) { where("start_date <= ? AND end_date >= ?", start_date, end_date) }
 
   def to_s
     "#{start_date} - #{end_date}"

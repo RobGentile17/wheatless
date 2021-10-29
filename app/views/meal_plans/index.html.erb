@@ -6,7 +6,7 @@
     <ul class="meals">
       <% @current_meal_plan.meals.each do |meal| %>
         <li class="meal">
-          <%= meal.date %> - <%= link_to meal.recipe, recipe_path(meal.recipe) %>
+          <%= meal.date.strftime('%A') %> - <%= link_to meal.recipe, recipe_path(meal.recipe) %>
         </li>
       <% end %>
     </ul>
